@@ -4,6 +4,10 @@ export class Usuarios{
     id: number;
     username: string;
     senha: string;
+    cpf: string;
+    dataNascimento: string;
+    endereco: string;
+    foto: string;
 
     constructor(){
     }

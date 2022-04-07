@@ -1,4 +1,3 @@
-
 <ion-header collapse="fade" [translucent]="true" id="principal">
   <ion-toolbar>
 
@@ -11,11 +10,31 @@
   </ion-toolbar>
 </ion-header>
 
-
 <ion-content [fullscreen]="true" id="main">
-
-
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Meus dados cadastrais</ion-card-title>
+    </ion-card-header>
+    <ion-avatar>
+      <img src={{foto}} id="avatar">
+    </ion-avatar>
+    <ion-list>
+      <ion-item>
+        <ion-label>CPF: {{cpf}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Idade: {{idade}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Nome: {{nomeUsuario}}</ion-label>
+      </ion-item>
+    </ion-list>
+    <ion-card-content>
+      Endereço: {{endereco}}
+    </ion-card-content>
+  </ion-card>
 </ion-content>
+
 
 <ion-tabs>
   <ion-tab-bar slot="bottom">
@@ -24,7 +43,7 @@
       <ion-label>Pagina inicial</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="about">
+    <ion-tab-button tab="sair">
       <ion-icon name="exit" (click)="sair()"></ion-icon>
       <ion-label>sair</ion-label>
     </ion-tab-button>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 import { Usuarios } from '../domains/usuarios';
 import { HomeService } from './home.service';
 
@@ -16,11 +17,15 @@ export class HomePage {
 
   service: HomeService;
 
-  constructor(service: HomeService, private router: Router) {
+  constructor(service: HomeService, private router: Router, private menu: MenuController) {
     this.service = service;
   }
 
-  async login(){
+  ngOnInit() {
+    this.menu.enable(false);
+  }
+
+  login(){
     localStorage.clear();
     
     this.service.login(this.username, this.password).subscribe((usuario: Usuarios[]) => {

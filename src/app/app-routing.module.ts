@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { DadosComponent } from './dados/dados.component';
 import { PrincipalComponent } from './principal/principal.component';
 
 
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: 'home',
     component: PrincipalComponent
+  },
+  {
+    path: 'dados',
+    component: DadosComponent
   },
   {
     path: '',
