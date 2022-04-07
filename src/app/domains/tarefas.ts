@@ -1,4 +1,4 @@
-export class Usuarios {
+export class Tarefas {
 
   id: number;
   titulo: string;
