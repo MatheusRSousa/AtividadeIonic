@@ -1,3 +1,42 @@
-<p>
-  tarefa works!
-</p>
+<ion-header collapse="fade" [translucent]="true" id="principal">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="openFirst()">
+        <ion-icon slot="icon-only" name="reorder-three-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Bem vindo {{ nomeUsuario }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" id="main">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="text-card">Tarefas</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-list>
+    <ion-card>
+      <div>
+        <ion-item>
+          <ion-label>titulo: {{ tarefas[1].descricao }}</ion-label>
+        </ion-item>
+      </div>
+    </ion-card>
+  </ion-list>
+</ion-content>
+
+<!-- <ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="Pagina inicial" (click)="voltarPaginaInicial()">
+      <ion-icon name="home"></ion-icon>
+      <ion-label>Pagina inicial</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="sair">
+      <ion-icon name="exit" (click)="sair()"></ion-icon>
+      <ion-label>sair</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs> -->
