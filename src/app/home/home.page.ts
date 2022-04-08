@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { MenuController } from '@ionic/angular';
+import { AlertController, MenuController } from '@ionic/angular';
 import { Usuarios } from '../domains/usuarios';
 import { HomeService } from './home.service';
 
@@ -17,7 +17,7 @@ export class HomePage {
 
   service: HomeService;
 
-  constructor(service: HomeService, private router: Router, private menu: MenuController) {
+  constructor(service: HomeService, private router: Router, private menu: MenuController, private alertController: AlertController) {
     this.service = service;
   }
 
@@ -35,12 +35,21 @@ export class HomePage {
         this.router.navigate(['/home']);
         this.username = '';
         this.password = '';
+      }else{
+        this.presentAlert();
       }
-      console.log(this.usuarios);
-      console.log(localStorage);
     },
     err=> alert(err))
   }
 
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Erro',
+      message: 'Usuário ou senha incorreta.',
+      buttons: ['OK']
+    });
 
+    await alert.present();
+  }
 }

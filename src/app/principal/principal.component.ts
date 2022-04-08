@@ -37,19 +37,18 @@ export class PrincipalComponent implements OnInit {
   async presentAlertConfirm() {
     const alert = await this.alertCtrl.create({
       cssClass: 'my-custom-class',
-      header: 'Confirm!',
-      message: 'Message <strong>text</strong>!!!',
+      header: 'Sair',
+      message: 'Deseja mesmo sair?',
       buttons: [
         {
-          text: 'Cancel',
+          text: 'Não',
           role: 'cancel',
           cssClass: 'secondary',
           id: 'cancel-button',
           handler: (blah) => {
-            console.log('Confirm Cancel: blah');
           }
         }, {
-          text: 'Okay',
+          text: 'Sim',
           id: 'confirm-button',
           handler: () => {
             this.route.navigate(['/login']);
