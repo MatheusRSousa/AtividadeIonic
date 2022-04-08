@@ -1,0 +1,35 @@
+{
+  "login": [
+    {
+      "id": 1,
+      "nome": "Matheus Rodrigues Sousa",
+      "username": "guest",
+      "senha": "guest",
+      "cpf": "123.456.789-12",
+      "dataNascimento": "20/05/1965",
+      "endereco": "Rua santo antonio, 53, Jeremias, Campina grande - PB",
+      "foto": "https://cdn.pixabay.com/photo/2020/07/14/13/07/icon-5404125 1280.png"
+    }
+  ],
+
+  "tarefas": [
+    {
+      "id": 1,
+      "titulo": "Projeto Mobile",
+      "descricao": "Projeto para a disciplina de desenvolvimento mobile",
+      "dataCriacao": "07/05/22",
+      "dataConclusao": "09/05/22",
+      "prioridade": true,
+      "concluido": false
+    },
+    {
+      "id": 2,
+      "titulo": "Projeto DotNet",
+      "descricao": "Projeto para a disciplina de DotNet",
+      "dataCriacao": "07/05/22",
+      "dataConclusao": "09/05/22",
+      "prioridade": false,
+      "concluido": false
+    }
+  ]
+}
