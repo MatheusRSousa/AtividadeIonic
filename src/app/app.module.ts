@@ -9,9 +9,10 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { TarefaComponent } from './tarefa/tarefa.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, TarefaComponent],
   entryComponents: [],
   imports: [
     CommonModule,

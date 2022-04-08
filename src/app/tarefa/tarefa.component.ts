@@ -27,6 +27,7 @@ export class TarefaComponent implements OnInit {
   carregarTarefas() {
     this.servico.buscarTarefas().subscribe((tarefas: Tarefas[]) => {
       this.tarefas = tarefas;
+      console.log(tarefas);
     });
   }
 
