@@ -6,10 +6,10 @@ import { Tarefas } from '../domains/tarefas';
 
 @Component({
   selector: 'app-tarefa',
-  templateUrl: './tarefa.component.html',
-  styleUrls: ['./tarefa.component.scss'],
+  templateUrl: './tarefa.page.html',
+  styleUrls: ['./tarefa.page.scss'],
 })
-export class TarefaComponent implements OnInit {
+export class TarefaPage implements OnInit {
   tarefas: Tarefas[] = [];
   tarefa: Tarefas = new Tarefas();
 
@@ -27,7 +27,6 @@ export class TarefaComponent implements OnInit {
   carregarTarefas() {
     this.servico.buscarTarefas().subscribe((tarefas: Tarefas[]) => {
       this.tarefas = tarefas;
-      console.log(tarefas);
     });
   }
 
@@ -42,6 +41,20 @@ export class TarefaComponent implements OnInit {
 
   sair() {
     this.presentAlertConfirm();
+  }
+
+  buscarTarefaPorId(id: number){
+    this.servico.buscarTarefasPorId(id).subscribe((tarefa : Tarefas) =>{
+      this.tarefa = tarefa;
+    });
+  }
+
+  deleteTarefa(id: number){
+    this.servico.deletarTarefa(id).subscribe(() =>{
+      console.log("sucesso");
+      this.carregarTarefas();
+    },
+      err => alert(err));
   }
 
   async presentAlertConfirm() {

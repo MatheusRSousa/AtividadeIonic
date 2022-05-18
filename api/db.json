@@ -6,30 +6,29 @@
       "username": "guest",
       "senha": "guest",
       "cpf": "123.456.789-12",
-      "dataNascimento": "20/05/1965",
+      "dataNascimento": "1965-07-12",
       "endereco": "Rua santo antonio, 53, Jeremias, Campina grande - PB",
-      "foto": "https://cdn.pixabay.com/photo/2020/07/14/13/07/icon-5404125 1280.png"
+      "foto": "https://cdn.pixabay.com/photo/2020/07/14/13/07/icon-5404125_1280.png"
     }
   ],
-
   "tarefas": [
     {
-      "id": 1,
-      "titulo": "Projeto Mobile",
-      "descricao": "Projeto para a disciplina de desenvolvimento mobile",
-      "dataCriacao": "07/05/22",
-      "dataConclusao": "09/05/22",
-      "prioridade": true,
+      "id": 2,
+      "titulo": "Tarefa 2",
+      "descricao": "Realizar tarefa 2",
+      "dataCriacao": "2022-02-03",
+      "dataConclusao": "2022-02-15",
+      "prioridade": false,
       "concluido": false
     },
     {
-      "id": 2,
-      "titulo": "Projeto DotNet",
-      "descricao": "Projeto para a disciplina de DotNet",
-      "dataCriacao": "07/05/22",
-      "dataConclusao": "09/05/22",
-      "prioridade": false,
-      "concluido": false
+      "id": 3,
+      "titulo": "Tarefa 3",
+      "descricao": "Realizar tarefa 3",
+      "dataCriacao": "2022-02-03",
+      "dataConclusao": "2022-02-15",
+      "prioridade": true,
+      "concluido": true
     }
   ]
 }

@@ -7,9 +7,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class TarefaService {
-  url = 'http://localhost:3000/tarefas';
+  private readonly url = 'http://localhost:3000/tarefas';
 
-  constructor(public http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
   public buscarTarefas(): Observable<Tarefas[]> {
     return this.http.get<Tarefas[]>(`${this.url}`);
@@ -17,5 +17,9 @@ export class TarefaService {
 
   public buscarTarefasPorId(id: number): Observable<Tarefas> {
     return this.http.get<Tarefas>(`${this.url}/${id}`);
+  }
+
+  public deletarTarefa(id: number): Observable<void>{
+    return this.http.delete<void>(`${this.url}/${id}`);
   }
 }
