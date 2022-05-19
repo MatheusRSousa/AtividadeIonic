@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, MenuController } from '@ionic/angular';
+import { UsuarioLogin } from '../domains/usuarioLogin';
 import { Usuarios } from '../domains/usuarios';
 import { HomeService } from './home.service';
 
@@ -10,36 +11,49 @@ import { HomeService } from './home.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-
-  usuarios: Array<Usuarios>;
+  usuarios: UsuarioLogin[];
   username: string = '';
   password: string = '';
 
-  service: HomeService;
-
-  constructor(service: HomeService, private router: Router, private menu: MenuController, private alertController: AlertController) {
-    this.service = service;
-  }
+  constructor(
+    private service: HomeService,
+    private router: Router,
+    private menu: MenuController,
+    private alertController: AlertController
+  ) {}
 
   ngOnInit() {
     this.menu.enable(false);
+
+    this.service
+      .getUsers()
+      .snapshotChanges()
+      .subscribe((res) => {
+        this.usuarios = [];
+        res.forEach((obj) => {
+          this.usuarios.push(obj.payload.toJSON() as UsuarioLogin);
+        });
+      });
   }
 
-  login(){
+  login() {
+    let loginAprovado = false;
     localStorage.clear();
-    
-    this.service.login(this.username, this.password).subscribe((usuario: Usuarios[]) => {
-      this.usuarios = usuario;
-      if(this.usuarios.length > 0){
-        localStorage.setItem("usuario", JSON.stringify(usuario[0]));
-        this.router.navigate(['/home']);
-        this.username = '';
-        this.password = '';
-      }else{
-        this.presentAlert();
+
+    this.usuarios.forEach((usuario) => {
+      if (usuario.user == this.username && usuario.password == this.password) {
+        loginAprovado = true;
       }
-    },
-    err=> alert(err))
+    });
+
+    if (loginAprovado) {
+      localStorage.setItem('usuario', JSON.stringify(this.username));
+      this.router.navigate(['/home']);
+      this.username = '';
+      this.password = '';
+    } else {
+      this.presentAlert();
+    }
   }
 
   async presentAlert() {
@@ -47,7 +61,7 @@ export class HomePage {
       cssClass: 'my-custom-class',
       header: 'Erro',
       message: 'Usuário ou senha incorreta.',
-      buttons: ['OK']
+      buttons: ['OK'],
     });
 
     await alert.present();

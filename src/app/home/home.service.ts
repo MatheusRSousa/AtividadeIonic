@@ -2,17 +2,24 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Usuarios } from '../domains/usuarios';
+import { UsuarioLogin } from '../domains/usuarioLogin';
+
+import {
+  AngularFireDatabase,
+  AngularFireList,
+  AngularFireObject,
+} from '@angular/fire/compat/database';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HomeService {
-  endpoint = 'http://localhost:3000/login';
+  ideaListRef: AngularFireList<any>;
+  ideaRef: AngularFireObject<any>;
 
-  constructor(public http: HttpClient) {}
+  constructor(private db: AngularFireDatabase) {}
 
-  public login(username: string, senha: string): Observable<Usuarios[]> {
-    return this.http.get<Usuarios[]>(`${this.endpoint}?usuarios=${username}&senha=${senha}`
-    );
+  getUsers() {
+    return this.db.list('/login');
   }
 }
