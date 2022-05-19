@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: TarefaPage
+  },
+  {
+    path: 'formulario',
+    loadChildren: () => import('./formulario/formulario.module').then( m => m.FormularioPageModule)
   }
 ];
 

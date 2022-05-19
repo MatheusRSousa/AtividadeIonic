@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button (click)="openFirst()">
-        <ion-icon slot="icon-only" name="reorder-three-outline"></ion-icon>
+        <ion-icon slot="icon-only" name="reorder-three-sharp"></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-title>Bem vindo {{ nomeUsuario }}</ion-title>
@@ -13,17 +13,22 @@
   
   <ion-card>
     <ion-card-header>
-      <ion-card-title class="text-card">Tarefas</ion-card-title>
+      <ion-item>
+        <ion-card-title class="text-card">Tarefas</ion-card-title>
+          <ion-button color="dark" slot="end" routerLink="/tarefas/formulario">
+            <ion-icon name="add-circle-sharp"></ion-icon>
+          </ion-button>
+      </ion-item>
     </ion-card-header>
   </ion-card>
   
   <ion-card>
-    <ion-item  class="ion-activated">
-      <ion-icon name="checkmark-outline" slot="start"></ion-icon>
+    <ion-item >
+      <ion-icon name="checkmark-sharp" slot="start"></ion-icon>
       <ion-label>Concluida</ion-label>
     </ion-item>
     <ion-item>
-      <ion-icon name="close-outline" slot="start"></ion-icon>
+      <ion-icon name="close-sharp" slot="start"></ion-icon>
       <ion-label>Não concluida</ion-label>
     </ion-item>
     <ion-item >
@@ -39,13 +44,15 @@
 
   <ion-card *ngFor="let tarefa of tarefas">
     <ion-card-header>
-        <ion-item href="#">
-        <ion-icon name="checkmark-outline" *ngIf="tarefa.concluido == true" slot="end"></ion-icon>
-        <ion-icon name="close-outline"  slot="end" *ngIf="tarefa.concluido == false"></ion-icon>
-        <ion-label><ion-card-title >{{tarefa.titulo}} 
-          <ion-badge *ngIf="tarefa.prioridade == true" color="primary">1</ion-badge> 
-          <ion-badge *ngIf="tarefa.prioridade == false" color="secondary">2</ion-badge>
-        </ion-card-title></ion-label>
+      <ion-item>
+        <ion-icon name="checkmark-sharp" *ngIf="tarefa.concluido == true" slot="end"></ion-icon>
+        <ion-icon name="close-sharp"  slot="end" *ngIf="tarefa.concluido == false"></ion-icon>
+        <ion-label>
+          <ion-card-title >{{tarefa.titulo}} 
+            <ion-badge *ngIf="tarefa.prioridade == true" color="primary">1</ion-badge> 
+            <ion-badge *ngIf="tarefa.prioridade == false" color="secondary">2</ion-badge>
+          </ion-card-title>
+        </ion-label>
       </ion-item>
     </ion-card-header>
 
@@ -61,10 +68,12 @@
     </ion-card-content>
 
     <ion-item>
-      <ion-icon name="create-outline" slot="end"></ion-icon>
-      <ion-tab-button slot="end" (click)=deleteTarefa(tarefa.id)>
-        <ion-icon name="trash-bin-outline"></ion-icon>
-      </ion-tab-button>
+      <ion-button color="dark" slot="end" (click)=deleteTarefa(tarefa.id)>
+        <ion-icon name="create-sharp" ></ion-icon>
+      </ion-button>
+      <ion-button color="dark" slot="end" (click)=deleteTarefa(tarefa.id)>
+        <ion-icon name="trash-bin-sharp"></ion-icon>
+      </ion-button>
     </ion-item>
   </ion-card>
 </ion-content>

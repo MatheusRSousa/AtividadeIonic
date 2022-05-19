@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { TarefaPageRoutingModule } from './tarefa-routing.module';
 
 import { TarefaPage } from './tarefa.page';
+import { FormularioPage } from './formulario/formulario.page';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { TarefaPage } from './tarefa.page';
     IonicModule,
     TarefaPageRoutingModule
   ],
-  declarations: [TarefaPage]
+  declarations: [TarefaPage, FormularioPage]
 })
 export class TarefaPageModule {}

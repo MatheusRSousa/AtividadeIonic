@@ -12,6 +12,7 @@ import { Tarefas } from '../domains/tarefas';
 export class TarefaPage implements OnInit {
   tarefas: Tarefas[] = [];
   tarefa: Tarefas = new Tarefas();
+  isModalOpen = true;
 
   constructor(
     private menu: MenuController,

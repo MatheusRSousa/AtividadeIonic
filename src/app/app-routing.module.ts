@@ -22,6 +22,10 @@ const routes: Routes = [
     loadChildren: () => import('./tarefa/tarefa.module').then( m => m.TarefaPageModule)
   },
   {
+    path: 'tarefas/formulario',
+    loadChildren: () => import('./tarefa/formulario/formulario.module').then( m => m.FormularioPageModule)
+  },
+  {
     path: '',
     redirectTo: 'login',
     pathMatch: 'full'
