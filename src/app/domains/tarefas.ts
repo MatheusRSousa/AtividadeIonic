@@ -1,5 +1,5 @@
 export class Tarefas {
-
+  $key: string;
   id: number;
   titulo: string;
   descricao: string;

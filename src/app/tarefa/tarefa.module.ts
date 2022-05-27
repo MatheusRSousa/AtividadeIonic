@@ -16,6 +16,6 @@ import { FormularioPage } from './formulario/formulario.page';
     IonicModule,
     TarefaPageRoutingModule
   ],
-  declarations: [TarefaPage, FormularioPage]
+  declarations: [TarefaPage]
 })
 export class TarefaPageModule {}

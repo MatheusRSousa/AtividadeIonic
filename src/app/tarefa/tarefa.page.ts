@@ -13,22 +13,40 @@ export class TarefaPage implements OnInit {
   tarefas: Tarefas[] = [];
   tarefa: Tarefas = new Tarefas();
   isModalOpen = true;
+  nomeUsuario: string = '';
 
   constructor(
     private menu: MenuController,
     private route: Router,
     private alertCtrl: AlertController,
     private servico: TarefaService
-  ) {}
+  ) {
+    this.nomeUsuario = JSON.parse(window.localStorage.getItem('usuario')).nome;
+  }
 
   ngOnInit(): void {
     this.carregarTarefas();
+    console.log(
+      'nome usuario: ' + JSON.parse(window.localStorage.getItem('usuario')).nome
+    );
   }
 
   carregarTarefas() {
-    this.servico.buscarTarefas().subscribe((tarefas: Tarefas[]) => {
-      this.tarefas = tarefas;
+    let tarefasAux = this.servico.getTarefas();
+    tarefasAux.snapshotChanges().subscribe((res) => {
+      this.tarefas = [];
+      res.forEach((obj) => {
+        let tarefa = obj.payload.toJSON();
+        tarefa['$key'] = obj.key;
+        console.log(tarefa)
+        this.tarefas.push(tarefa as Tarefas);
+
+      });
     });
+
+    // this.servico.buscarTarefas().subscribe((tarefas: Tarefas[]) => {
+    //   this.tarefas = tarefas;
+    // });
   }
 
   openFirst() {
@@ -44,18 +62,20 @@ export class TarefaPage implements OnInit {
     this.presentAlertConfirm();
   }
 
-  buscarTarefaPorId(id: number){
-    this.servico.buscarTarefasPorId(id).subscribe((tarefa : Tarefas) =>{
+  buscarTarefaPorId(id: number) {
+    this.servico.buscarTarefasPorId(id).subscribe((tarefa: Tarefas) => {
       this.tarefa = tarefa;
     });
   }
 
-  deleteTarefa(id: number){
-    this.servico.deletarTarefa(id).subscribe(() =>{
-      console.log("sucesso");
-      this.carregarTarefas();
-    },
-      err => alert(err));
+  deleteTarefa(id: number) {
+    this.servico.deletarTarefa(id).subscribe(
+      () => {
+        console.log('sucesso');
+        this.carregarTarefas();
+      },
+      (err) => alert(err)
+    );
   }
 
   async presentAlertConfirm() {

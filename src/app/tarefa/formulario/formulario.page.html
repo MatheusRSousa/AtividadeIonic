@@ -1,9 +1,42 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>formulario</ion-title>
+  <ion-toolbar class="ios hydrated">
+    <ion-title class="ios title-ios hydrated">Tarefas</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-list lines="full">
+    <form [formGroup]="tarefaForm" (ngSubmit)="formSubimit()">
+      <ion-item>
+        <ion-label position="floating">Título</ion-label>
+        <ion-input formControlName="titulo" type="text" required=></ion-input>
+      </ion-item>
 
+      <ion-item>
+        <ion-label position="floating">Descrição</ion-label>
+        <ion-input formControlName="descricao" type="text" required=></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Data de Criação</ion-label>
+        <ion-input formControlName="dataConclusao" type="text" required=></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Prioridade</ion-label>
+        <ion-checkbox formControlName="prioridade"></ion-checkbox>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Concluído</ion-label>
+        <ion-checkbox formControlName="concluido">Teste</ion-checkbox>
+      </ion-item>
+
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" color="primary" shape="full" expand="block">Criar Tarefa</ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-list>
 </ion-content>
