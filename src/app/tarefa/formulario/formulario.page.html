@@ -1,9 +1,45 @@
-<ion-header>
+<ion-header collapse="fade" [translucent]="true" id="principal">
   <ion-toolbar>
-    <ion-title>formulario</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="openFirst()">
+        <ion-icon slot="icon-only" name="reorder-three-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Crie uma tarefa</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title><img src="https://cdn.pixabay.com/photo/2016/03/31/19/50/checklist-1295319_960_720.png" id="avatar"></ion-card-title>
+    </ion-card-header>
+
+    <ion-item >
+      <ion-label position="floating" mode="md" required="true">Titulo</ion-label>
+      <ion-input [(ngModel)]="titulo"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating" mode="md" required="true">Descricao</ion-label>
+      <ion-input [(ngModel)]="descricao"></ion-input>
+    </ion-item>
+    <ion-item >
+      <ion-label position="floating" mode="md" required="true">Data Conclusao</ion-label>
+      <ion-input [(ngModel)]="dataConclusao"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Prioridade</ion-label>
+      <ion-select [(ngModel)]="prioridade" placeholder="Selecione">
+        <ion-select-option value="true">Sim</ion-select-option>
+        <ion-select-option value="false">Não</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-button shape="round" expand="block" (click)="voltarPaginaInicial()">Enviar</ion-button>
+  </ion-card>
+  
+  
+
 </ion-content>
+
+
