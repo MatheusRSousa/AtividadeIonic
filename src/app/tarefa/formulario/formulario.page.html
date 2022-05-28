@@ -16,30 +16,39 @@
       <ion-card-title><img src="https://cdn.pixabay.com/photo/2016/03/31/19/50/checklist-1295319_960_720.png" id="avatar"></ion-card-title>
     </ion-card-header>
 
-    <ion-item >
-      <ion-label position="floating" mode="md" required="true">Titulo</ion-label>
-      <ion-input [(ngModel)]="titulo"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating" mode="md" required="true">Descricao</ion-label>
-      <ion-input [(ngModel)]="descricao"></ion-input>
-    </ion-item>
-    <ion-item >
-      <ion-label position="floating" mode="md" required="true">Data Conclusao</ion-label>
-      <ion-input [(ngModel)]="dataConclusao"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Prioridade</ion-label>
-      <ion-select [(ngModel)]="prioridade" placeholder="Selecione">
-        <ion-select-option value="true">Sim</ion-select-option>
-        <ion-select-option value="false">Não</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-button shape="round" expand="block" (click)="voltarPaginaInicial()">Enviar</ion-button>
+    <ion-list lines="full">
+      <form [formGroup]="tarefaForm" (ngSubmit)="formSubimit()">
+        <ion-item>
+          <ion-label position="floating" mode="md" required="true">Titulo</ion-label>
+          <ion-input formControlName="titulo" type="text" required=></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating" mode="md" required="true">Descrição</ion-label>
+          <ion-input formControlName="descricao" type="text" required=></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label position="floating" mode="md" required="true">Data Conclusao</ion-label>
+          <ion-input formControlName="dataConclusao" type="text" required=></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label>Prioridade</ion-label>
+          <ion-checkbox formControlName="prioridade"></ion-checkbox>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label>Concluído</ion-label>
+          <ion-checkbox formControlName="concluido">Teste</ion-checkbox>
+        </ion-item>
+  
+        <ion-row>
+          <ion-col>
+            <ion-button shape="round" type="submit" color="primary" shape="full" expand="block">Criar Tarefa</ion-button>
+          </ion-col>
+        </ion-row>
+      </form>
+    </ion-list>
   </ion-card>
-  
-  
-
 </ion-content>
-
-

@@ -11,24 +11,5 @@
       "foto": "https://cdn.pixabay.com/photo/2020/07/14/13/07/icon-5404125_1280.png"
     }
   ],
-  "tarefas": [
-    {
-      "id": 2,
-      "titulo": "Tarefa 2",
-      "descricao": "Realizar tarefa 2",
-      "dataCriacao": "2022-02-03",
-      "dataConclusao": "2022-02-15",
-      "prioridade": false,
-      "concluido": false
-    },
-    {
-      "id": 3,
-      "titulo": "Tarefa 3",
-      "descricao": "Realizar tarefa 3",
-      "dataCriacao": "2022-02-03",
-      "dataConclusao": "2022-02-15",
-      "prioridade": true,
-      "concluido": true
-    }
-  ]
+  "tarefas": []
 }

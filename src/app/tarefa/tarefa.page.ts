@@ -13,21 +13,34 @@ export class TarefaPage implements OnInit {
   tarefas: Tarefas[] = [];
   tarefa: Tarefas = new Tarefas();
   isModalOpen = true;
+  nomeUsuario: string = '';
 
   constructor(
     private menu: MenuController,
     private route: Router,
     private alertCtrl: AlertController,
     private servico: TarefaService
-  ) {}
+  ) {
+    this.nomeUsuario = JSON.parse(window.localStorage.getItem('usuario')).nome;
+  }
 
   ngOnInit(): void {
     this.carregarTarefas();
+    console.log(
+      'nome usuario: ' + JSON.parse(window.localStorage.getItem('usuario')).nome
+    );
   }
 
   carregarTarefas() {
-    this.servico.buscarTarefas().subscribe((tarefas: Tarefas[]) => {
-      this.tarefas = tarefas;
+    let tarefasAux = this.servico.getTarefas();
+    tarefasAux.snapshotChanges().subscribe((res) => {
+      this.tarefas = [];
+      res.forEach((obj) => {
+        let tarefa = obj.payload.toJSON();
+        tarefa['$key'] = obj.key;
+        this.tarefas.push(tarefa as Tarefas);
+
+      });
     });
   }
 
@@ -36,33 +49,20 @@ export class TarefaPage implements OnInit {
     this.menu.open('menu');
   }
 
-  voltarPaginaInicial() {
-    this.route.navigate(['/home']);
-  }
-
-  sair() {
-    this.presentAlertConfirm();
-  }
-
-  buscarTarefaPorId(id: number){
-    this.servico.buscarTarefasPorId(id).subscribe((tarefa : Tarefas) =>{
+  buscarTarefaPorId(id: number) {
+    this.servico.buscarTarefasPorId(id).subscribe((tarefa: Tarefas) => {
       this.tarefa = tarefa;
     });
   }
 
-  deleteTarefa(id: number){
-    this.servico.deletarTarefa(id).subscribe(() =>{
-      console.log("sucesso");
-      this.carregarTarefas();
-    },
-      err => alert(err));
+  deleteTarefa(id: number) {
+    this.deleteConfirm(id);
   }
 
-  async presentAlertConfirm() {
+  async deleteConfirm(id: number) {
     const alert = await this.alertCtrl.create({
       cssClass: 'my-custom-class',
-      header: 'Sair',
-      message: 'Deseja mesmo sair?',
+      message: 'Deseja deletar essa tarefa?',
       buttons: [
         {
           text: 'Não',
@@ -75,8 +75,9 @@ export class TarefaPage implements OnInit {
           text: 'Sim',
           id: 'confirm-button',
           handler: () => {
-            this.route.navigate(['/login']);
-            localStorage.clear();
+            this.servico.deletarTarefa(id);
+            this.carregarTarefas();
+            console.log('id ' + id);
           },
         },
       ],

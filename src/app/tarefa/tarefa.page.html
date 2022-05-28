@@ -68,10 +68,10 @@
     </ion-card-content>
 
     <ion-item>
-      <ion-button color="dark" slot="end" (click)=deleteTarefa(tarefa.id)>
+      <ion-button color="dark" slot="end" (click)=deleteTarefa(tarefa.$key)>
         <ion-icon name="create-sharp" ></ion-icon>
       </ion-button>
-      <ion-button color="dark" slot="end" (click)=deleteTarefa(tarefa.id)>
+      <ion-button color="dark" slot="end" (click)=deleteTarefa(tarefa.$key)>
         <ion-icon name="trash-bin-sharp"></ion-icon>
       </ion-button>
     </ion-item>
