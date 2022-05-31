@@ -17,7 +17,7 @@ export class TarefaPage implements OnInit {
 
   constructor(
     private menu: MenuController,
-    private route: Router,
+    private router: Router,
     private alertCtrl: AlertController,
     private servico: TarefaService
   ) {
@@ -26,9 +26,6 @@ export class TarefaPage implements OnInit {
 
   ngOnInit(): void {
     this.carregarTarefas();
-    console.log(
-      'nome usuario: ' + JSON.parse(window.localStorage.getItem('usuario')).nome
-    );
   }
 
   carregarTarefas() {
@@ -44,15 +41,13 @@ export class TarefaPage implements OnInit {
     });
   }
 
+  alterarTarefa(id: number){
+    this.router.navigate(['/tarefas/formulario/'+id]);
+  }
+
   openFirst() {
     this.menu.enable(true, 'menu');
     this.menu.open('menu');
-  }
-
-  buscarTarefaPorId(id: number) {
-    this.servico.buscarTarefasPorId(id).subscribe((tarefa: Tarefas) => {
-      this.tarefa = tarefa;
-    });
   }
 
   deleteTarefa(id: number) {
@@ -77,7 +72,6 @@ export class TarefaPage implements OnInit {
           handler: () => {
             this.servico.deletarTarefa(id);
             this.carregarTarefas();
-            console.log('id ' + id);
           },
         },
       ],

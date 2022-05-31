@@ -42,12 +42,12 @@ export class HomePage {
 
     this.usuarios.forEach((usuario) => {
       if (usuario.user == this.username && usuario.password == this.password) {
+        localStorage.setItem('usuario', JSON.stringify(usuario));
         loginAprovado = true;
       }
     });
 
     if (loginAprovado) {
-      localStorage.setItem('usuario', JSON.stringify(this.username));
       this.router.navigate(['/home']);
       this.username = '';
       this.password = '';

@@ -35,8 +35,6 @@ export class DadosComponent implements OnInit {
 
   transformarDataEmIdade(dataNascimento: Date, dataAtual: Date){
       this.idade = (dataAtual.getFullYear() - dataNascimento.getFullYear()).toString();
-      console.log(dataAtual.getFullYear());
-      console.log(dataNascimento.getFullYear());
   }
 
   openFirst() {

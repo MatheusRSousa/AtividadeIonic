@@ -16,9 +16,7 @@ export class TarefaService {
   ideaListRef: AngularFireList<any>;
   ideaRef: AngularFireObject<any>;
 
-  private readonly url = 'http://localhost:3000/tarefas';
-
-  constructor(private http: HttpClient, private db: AngularFireDatabase) {}
+  constructor( private db: AngularFireDatabase) {}
 
   public getTarefas() {
     return this.db.list('/tarefa');
@@ -35,12 +33,20 @@ export class TarefaService {
     });
   }
 
-  public buscarTarefas(): Observable<Tarefas[]> {
-    return this.http.get<Tarefas[]>(`${this.url}`);
+  public buscarTarefaPorId(id: number) {
+    return this.ideaRef = this.db.object("/tarefa/"+id);
   }
 
-  public buscarTarefasPorId(id: number): Observable<Tarefas> {
-    return this.http.get<Tarefas>(`${this.url}/${id}`);
+  public alterarTarefa(id: number, obj: Tarefas){
+    this.ideaRef = this.db.object('/tarefa/'+id);
+    return this.ideaRef.update({
+      titulo: obj.titulo,
+      descricao: obj.descricao,
+      dataCriacao: obj.dataCriacao,
+      dataConclusao: obj.dataConclusao,
+      prioridade: obj.prioridade,
+      concluido: obj.concluido,
+    });
   }
 
   public deletarTarefa(id: number){
