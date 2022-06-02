@@ -1,25 +1,28 @@
-
 <ion-header collapse="fade" [translucent]="true" id="principal">
   <ion-toolbar>
-
     <ion-buttons slot="start">
-      <ion-button (click)=openFirst()>
+      <ion-button (click)="openFirst()">
         <ion-icon slot="icon-only" name="reorder-three-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>Bem vindo {{nomeUsuario}}</ion-title>
+    <ion-title>Olá, {{ nomeUsuario }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
+<ion-card class="ion-text-center">
+  <ion-card-header>
+    <ion-card-title>Bem vindo ao SGT</ion-card-title>
+    <ion-card-subititle>Sistema de Gerenciamento de Tarefas</ion-card-subititle>
+  </ion-card-header>
 
-<ion-content [fullscreen]="true" id="main">
- 
-  <ion-toolbar>
-    <ion-title size="small">Bem vindo ao gerenciador de tarefas</ion-title>
-  </ion-toolbar>
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsmS7cJVBdLBySIvaGvFXZqpFzIl6EGItHygBT0Eti0BU4AFwlDJrZZPqlNgX-CnF8KVs&usqp=CAU">
- 
-</ion-content>
+  <ion-card-content>
+    <img
+      src="https://img.freepik.com/vetores-gratis/gerente-priorizando-tarefas-na-lista-de-tarefas_74855-5272.jpg?t=st=1654133629~exp=1654134229~hmac=9dc5a570f69bdd889c5f9574c778eb09a7be72448c19a021e9c3f9ed79320b66&w=1380"
+    />
+  </ion-card-content>
+
+  <ion-card-content> No menu lateral é possível criar e listar as tarefas criadas</ion-card-content>
+</ion-card>
 
 <ion-tabs>
   <ion-tab-bar slot="bottom">
